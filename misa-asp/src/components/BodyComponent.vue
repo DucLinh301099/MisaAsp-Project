@@ -14,10 +14,11 @@
         <img :src="service.logo" alt="Service Logo" class="service-logo" />
         <div class="service-details">
           <h3>{{ service.name }}</h3>
-          <div class="rating">
+          <div class="rating" v-if="service.rating > 0">
             <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= service.rating }">&#9733;</span>
             <span>{{ service.reviews }} Đánh giá</span>
           </div>
+          <div v-else>Chưa có đánh giá</div>
           <div class="info">
             <span>{{ service.customers }} khách hàng</span>
             <span>{{ service.location }}</span>
@@ -27,13 +28,18 @@
       </div>
     </div>
     <div class="pagination">
-      <button @click="prevPage" :disabled="currentPage === 1">Trước</button>
-      <button @click="nextPage" :disabled="currentPage === totalPages">Sau</button>
+      <button @click="onPrevPage" :disabled="currentPage === 1">Trước</button>
+      <button @click="onNextPage" :disabled="currentPage === totalPages">Sau</button>
+    </div>
+    <div class="view-all">
+      <a href="#">Xem tất cả</a>
     </div>
   </div>
 </template>
 
 <script>
+import { getServices, filterServices, prevPage, nextPage } from '../api/service';
+
 export default {
   name: 'BodyComponent',
   data() {
@@ -41,106 +47,34 @@ export default {
       searchQuery: '',
       selectedFilter: 'Tiêu biểu',
       filters: ['Tiêu biểu', 'Có ưu đãi', 'Mới nhất', 'Tổ chức', 'Cá nhân'],
-      services: [
-        {
-          id: 1,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY CỔ PHẦN TƯ VẤN THUẾ SAVITAX',
-          rating: 5,
-          reviews: 86,
-          customers: 378,
-          location: 'Hồ Chí Minh',
-          price: '500.000 - 20.000.000'
-        },
-        {
-          id: 2,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH DỊCH VỤ KẾ TOÁN THUẾ VÀ CUNG ỨNG LAO ĐỘNG QUANG HUY',
-          rating: 4,
-          reviews: 25,
-          customers: 191,
-          location: 'Hồ Chí Minh',
-          price: '500.000 - 100.000.000'
-        },
-        {
-          id: 3,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ DOANH NGHIỆP NHẬT MINH',
-          rating: 0,
-          reviews: 0,
-          customers: 376,
-          location: 'Hà Nội',
-          price: '500.000 - 20.000.000'
-        },
-        {
-          id: 4,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH DỊCH VỤ TƯ VẤN VÀ ĐẠI LÝ THUẾ TRƯỜNG GIA',
-          rating: 5,
-          reviews: 16,
-          customers: 168,
-          location: 'Hồ Chí Minh',
-          price: '500.000 - 20.000.000'
-        },
-        {
-          id: 5,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH KẾ TOÁN AN GIẢI PHÁP',
-          rating: 5,
-          reviews: 1,
-          customers: 127,
-          location: 'Hà Nội',
-          price: '500.000 - 20.000.000'
-        },
-        {
-          id: 6,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH TƯ VẤN DỊCH VỤ SLF',
-          rating: 4,
-          reviews: 7,
-          customers: 112,
-          location: 'Hồ Chí Minh',
-          price: '500.000 - 20.000.000'
-        },
-        {
-          id: 7,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH KẾ TOÁN TÀI CHÍNH FATA',
-          rating: 5,
-          reviews: 23,
-          customers: 92,
-          location: 'Khánh Hòa',
-          price: '1.500.000 - 50.000.000'
-        },
-        {
-          id: 8,
-          logo: 'https://via.placeholder.com/50',
-          name: 'CÔNG TY TNHH DỊCH VỤ KẾ TOÁN THUẾ MINH ĐỨC',
-          rating: 4,
-          reviews: 9,
-          customers: 146,
-          location: 'Hà Nội',
-          price: '500.000 - 20.000.000'
-        }
-      ],
+      services: [],
       currentPage: 1,
       totalPages: 1,
     };
   },
   computed: {
     filteredServices() {
-      return this.services.filter(service => 
-        service.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+      return filterServices(this.services, this.searchQuery);
     }
   },
   methods: {
-    prevPage() {
-      if (this.currentPage > 1) this.currentPage--;
+    async fetchServices() {
+      try {
+        const services = await getServices();
+        this.services = services;
+      } catch (error) {
+        console.error('Failed to fetch services:', error);
+      }
     },
-    nextPage() {
-      if (this.currentPage < this.totalPages) this.currentPage++;
+    onPrevPage() {
+      this.currentPage = prevPage(this.currentPage);
+    },
+    onNextPage() {
+      this.currentPage = nextPage(this.currentPage, this.totalPages);
     }
+  },
+  created() {
+    this.fetchServices();
   }
 };
 </script>

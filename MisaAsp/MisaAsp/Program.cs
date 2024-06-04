@@ -1,23 +1,14 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using MisaAsp.Repositories;
 using MisaAsp.Services;
 using Npgsql;
-using Dapper;
-using System;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -28,12 +19,11 @@ builder.Services.AddCors(options =>
                    .AllowAnyHeader();
         });
 });
-builder.Services.AddScoped<IDbConnection>(sp =>
-{
-    var configuration = sp.GetRequiredService<IConfiguration>();
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
-    return new NpgsqlConnection(connectionString);
-});
+
+// Đăng ký các dịch vụ cần thiết
+builder.Services.AddScoped<IRegistrationService, RegistrationService>();
+builder.Services.AddScoped<ServiceRepository>();
+builder.Services.AddScoped<DatabaseHelper>();
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
@@ -47,6 +37,13 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+builder.Services.AddScoped<IDbConnection>(sp =>
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
+    return new NpgsqlConnection(connectionString);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,8 +56,6 @@ if (app.Environment.IsDevelopment())
     // specifying the Swagger JSON endpoint.
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MisaAsp v1"));
 }
-
-
 
 app.UseRouting();
 app.UseCors("AllowAll");

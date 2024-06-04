@@ -18,15 +18,17 @@
         </div>
         <div class="form-group">
           <input type="text" v-model="email" placeholder="Email" required />
+          <div v-if="errors.Email" class="error">{{ errors.Email }}</div>
         </div>
         <div class="form-group">
           <input type="text" v-model="phoneNumber" placeholder="Số điện thoại" required />
-          <div v-if="errors.PhoneNumber" class="error">{{ errors.PhoneNumber[0] }}</div>
+          <div v-if="errors.PhoneNumber" class="error">{{ errors.PhoneNumber }}</div>
         </div>
         <div class="form-group">
           <input type="password" v-model="password" placeholder="Mật khẩu" required />
         </div>
         <button type="submit" class="register-button">Đăng ký</button>
+        <div v-if="generalError" class="error">{{ generalError }}</div>
       </form>
     </div>
   </div>
@@ -44,7 +46,8 @@ export default {
       email: '',
       phoneNumber: '',
       password: '',
-      errors: {}
+      errors: {},
+      generalError: ''
     };
   },
   methods: {
@@ -57,10 +60,20 @@ export default {
         this.$router.push('/login');
       } catch (error) {
         console.error('There was an error registering the user:', error);
-        if (error.errors) {
-          this.errors = error.errors;
-        } else {
-          alert('Registration failed: ' + error);
+        this.errors = {};
+        this.generalError = '';
+
+        // Handle specific validation errors
+        if (error.message.includes('Email error')) {
+          this.errors.Email = error.message.split(', ').find(msg => msg.includes('Email error'));
+        }
+        if (error.message.includes('Phone number error')) {
+          this.errors.PhoneNumber = error.message.split(', ').find(msg => msg.includes('Phone number error'));
+        }
+
+        // Handle general error
+        if (!this.errors.Email && !this.errors.PhoneNumber) {
+          this.generalError = error.message;
         }
       }
     }
@@ -110,6 +123,7 @@ h2 {
 .form-group {
   margin-bottom: 20px;
   display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -127,19 +141,10 @@ h2 {
   margin: 0;
 }
 
-.terms {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.terms a {
-  color: #1E90FF;
-  text-decoration: none;
-}
-
-.terms a:hover {
-  text-decoration: underline;
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 5px;
 }
 
 .register-button {

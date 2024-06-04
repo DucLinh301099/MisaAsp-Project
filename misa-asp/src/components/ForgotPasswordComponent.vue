@@ -37,7 +37,7 @@ export default {
                 alert('Password reset link has been sent to your email.');
             } catch (error) {
                 console.error('There was an error processing the forgot password request:', error);
-                alert('Failed to process request: ' + error);
+                alert('Email Not Found: ' + error);
             }
         }
     }

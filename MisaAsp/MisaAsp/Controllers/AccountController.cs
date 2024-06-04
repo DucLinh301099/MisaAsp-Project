@@ -24,15 +24,22 @@ namespace MisaAsp.Controllers
                 return BadRequest(ModelState);
             }
 
-            var userId = await _registrationService.RegisterUserAsync(request);
+            try
+            {
+                var userId = await _registrationService.RegisterUserAsync(request);
 
-            if (userId > 0)
-            {
-                return Ok(new { Message = "Registration successful!", UserId = userId });
+                if (userId > 0)
+                {
+                    return Ok(new { Message = "Registration successful!", UserId = userId });
+                }
+                else
+                {
+                    return StatusCode(500, "An error occurred while registering the user.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return StatusCode(500, "An error occurred while registering the user.");
+                return BadRequest(new { Message = ex.Message });
             }
         }
 

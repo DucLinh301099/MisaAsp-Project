@@ -1,11 +1,11 @@
 // src/api/service.js
-import axios from 'axios';
+import { apiClient } from './base.js';
 
-const API_URL = 'https://localhost:7173/api/Services'; // Adjust this URL based on your API's address
+const API_URL = 'Accountant/list'; // Adjust this endpoint based on your API's address
 
 export const getServices = async () => {
   try {
-    const response = await axios.get(API_URL);
+    const response = await apiClient.get(API_URL);
     return response.data;
   } catch (error) {
     console.error('Failed to fetch services:', error);

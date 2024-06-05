@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xcrs3CJVGOD+ACY9GZzg9Sb6/mGAGXWlj6gY0PO6hcIcO3t0CzbRvrtYgETkebpscIOaTKUk5zAK3NMC6Iny9A==",
+  "dgSpecHash": "utQVnFncDTkFvBTlg3Gc+0YeQBhtyXiGL2hF0X2tW/k29iHNrEx1HxaqIqZ/WPcTNunNn6MWWeBF0GIW5wj1WQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\29-05-2024\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
+  "projectFilePath": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vdlinh\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",
@@ -27,6 +27,7 @@
     "C:\\Users\\vdlinh\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.1.2\\microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.6.0\\microsoft.identitymodel.tokens.7.6.0.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\vdlinh\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.4\\npgsql.entityframeworkcore.postgresql.8.0.4.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",

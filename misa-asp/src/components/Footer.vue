@@ -54,53 +54,12 @@
 </template>
 
 <script>
+import '../assets/css/footer.css';
 export default {
   name: 'FooterComponent',
 };
 </script>
 
 <style scoped>
-.footer {
-  background-color: #f5f5f5;
-  padding: 20px 0;
-}
 
-.footer-container {
-  display: flex;
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.footer-section {
-  flex: 1;
-  min-width: 200px;
-  margin: 10px;
-}
-
-.footer-section h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.footer-section ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.footer-section li {
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.footer-section a {
-  color: #333;
-  text-decoration: none;
-}
-
-.footer-section a:hover {
-  text-decoration: underline;
-}
 </style>

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MisaAsp.Models
+namespace MisaAsp.Models.DTO
 {
-    public class Service
+    public class AccountantGeneric
     {
         public int Id { get; set; }
         public string Name { get; set; }

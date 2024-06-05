@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MisaAsp.Models;
+using MisaAsp.Models.Ulti;
+using MisaAsp.Models.ViewModel;
 using MisaAsp.Services;
 using System.Threading.Tasks;
 
@@ -10,64 +11,84 @@ namespace MisaAsp.Controllers
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
     {
-        private readonly IRegistrationService _registrationService;
+        private readonly IAccountService _accountService;
 
-        public AccountController(IRegistrationService registrationService)
+        public AccountController(IAccountService accountService)
         {
-            _registrationService = registrationService;
+            _accountService = accountService;
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegistrationRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var res = new ResOutput();
 
             try
             {
-                var userId = await _registrationService.RegisterUserAsync(request);
-
-                if (userId > 0)
+                if (!ModelState.IsValid)
                 {
-                    return Ok(new { Message = "Registration successful!", UserId = userId });
+                    res.HandleError("Thất bại");
                 }
                 else
                 {
-                    return StatusCode(500, "An error occurred while registering the user.");
+                    var userId = await _accountService.RegisterUserAsync(request);
+                    if (userId > 0)
+                    {
+                        res.HandleSuccess("Đăng kí thành công", new { UserId = userId });
+                    }
+                    else
+                    {
+                        res.HandleError("Đăng kí thất bại", new { UserId = userId });
+                    }
                 }
+
+                return Ok(res);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { Message = ex.Message });
+                res.HandleError(ex.Message);
+                return BadRequest(res);
             }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var res = new ResOutput();
 
-            var token = await _registrationService.AuthenticateUserAsync(request);
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    res.HandleError("Thất bại");
+                }
+                else
+                {
+                    var token = await _accountService.AuthenticateUserAsync(request);
+                    if (!string.IsNullOrEmpty(token))
+                    {
+                        res.HandleSuccess("Đăng nhập thành công", new { Token = token });
+                    }
+                    else
+                    {
+                        res.HandleError("Thông tin đăng nhập không hợp lệ");
+                    }
+                }
 
-            if (!string.IsNullOrEmpty(token))
-            {
-                return Ok(new { Token = token });
+                return Ok(res);
             }
-            else
+            catch (Exception ex)
             {
-                return Unauthorized(new { Message = "Invalid credentials" });
+                res.HandleError(ex.Message);
+                return BadRequest(res);
             }
         }
 
         [HttpGet("users")]
-        
+
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _registrationService.GetAllUsersAsync();
+            var users = await _accountService.GetAllUsersAsync();
 
             if (users != null)
             {
@@ -79,27 +100,96 @@ namespace MisaAsp.Controllers
             }
         }
 
-        [HttpPost("forgot-password")]
-        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
+        [HttpPut("users/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUser user)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var res = new ResOutput();
 
-            var result = await _registrationService.ForgotPasswordAsync(request);
+            try
+            {
+                if (id != user.Id)
+                {
+                    res.HandleError("User ID không khớp");
+                }
+                else
+                {
+                    var result = await _accountService.UpdateUserAsync(user);
+                    if (result)
+                    {
+                        res.HandleSuccess("Cập nhật người dùng thành công");
+                    }
+                    else
+                    {
+                        res.HandleError("Cập nhật người dùng thất bại");
+                    }
+                }
 
-            if (result)
-            {
-                return Ok(new { Message = "Password reset link has been sent to your email." });
+                return Ok(res);
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { Message = "Email not found." });
+                res.HandleError($"Có lỗi xảy ra khi cập nhật người dùng: {ex.Message}");
+                return BadRequest(res);
             }
         }
 
+        [HttpDelete("users/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var res = new ResOutput();
 
+            try
+            {
+                var deleted = await _accountService.DeleteUserAsync(id);
+                if (deleted)
+                {
+                    res.HandleSuccess("Xóa người dùng thành công");
+                }
+                else
+                {
+                    res.HandleError("Xóa người dùng thất bại");
+                }
 
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                res.HandleError(ex.Message);
+                return BadRequest(res);
+            }
+        }
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
+        {
+            var res = new ResOutput();
+
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    res.HandleError("Thất bại");
+                }
+                else
+                {
+                    var result = await _accountService.ForgotPasswordAsync(request);
+                    if (result)
+                    {
+                        res.HandleSuccess("Liên kết đặt lại mật khẩu đã được gửi đến email của bạn");
+                    }
+                    else
+                    {
+                        res.HandleError("Không tìm thấy email");
+                    }
+                }
+
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                res.HandleError(ex.Message);
+                return BadRequest(res);
+            }
+        }
     }
 }

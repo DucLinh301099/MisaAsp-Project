@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MisaAsp.Models
+namespace MisaAsp.Models.ViewModel
 {
     public class UserRequest
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
 

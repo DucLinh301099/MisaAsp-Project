@@ -3,7 +3,7 @@
     <div class="header">
       <router-link to="/" class="logo">
         <img
-          src="C:\Users\vdlinh\source\repos\Vuejs\Day5\MisaAsp-Project\29-05-2024\misa-asp\src\assets\image\logo123.jpg"
+          src="C:/Users/vdlinh/source/repos/Vuejs/MisaAsp-Project/misa-asp/src/assets/image/logo123.jpg"
           alt="Logo" />
       </router-link>
       <h1>Quản lý người dùng</h1>
@@ -11,102 +11,99 @@
     <table class="user-table">
       <thead>
         <tr>
+          <!-- <th>Id</th> -->
           <th>Họ Tên</th>
           <th>Email</th>
           <th>Số điện thoại</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
+          <!-- <td>{{ user.id }}</td> -->
           <td>{{ user.firstName }} {{ user.lastName }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phoneNumber }}</td>
+          <td class="actions">
+            <button @click="editUser(user)">Edit</button>
+            <button @click="deleteUser(user.id)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Edit Modal -->
+    <div v-if="editingUser" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="cancelEdit">&times;</span>
+        <h2>Edit User</h2>
+        <form @submit.prevent="saveUser">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" v-model="editingUser.firstName" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" v-model="editingUser.lastName" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" v-model="editingUser.email" required>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" v-model="editingUser.phoneNumber" required>
+          </div>
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { updateUser, deleteUserById } from '../api/account';
 import { fetchProtectedData } from '../api/base';
-
+import '../assets/css/admin.css';
 export default {
   name: 'AdminComponent',
   data() {
     return {
-      users: []
+      users: [],
+      editingUser: null,
     };
   },
   async created() {
-    try {
+    await this.loadUsers();
+  },
+  methods: {
+    async loadUsers() {
       const response = await fetchProtectedData();
       this.users = response;
-    } catch (error) {
-      console.error('Error fetching users:', error.response ? error.response.data : error.message);
-      alert('Failed to fetch user data: ' + (error.response ? error.response.data.message : error.message));
+    },
+    editUser(user) {
+      this.editingUser = { ...user };
+    },
+    async saveUser() {
+      const updatedUser = await updateUser(this.editingUser);
+      this.editingUser = null;
+      alert('User updated successfully!');
+      await this.loadUsers(); // Load lại danh sách người dùng sau khi cập nhật thành công
+    },
+    cancelEdit() {
+      this.editingUser = null;
+    },
+    async deleteUser(id) {
+      if (confirm('Are you sure you want to delete this user?')) {
+        await deleteUserById(id);
+        this.users = this.users.filter(user => user.id !== id);
+        alert('User deleted successfully!');
+      }
     }
   }
 };
 </script>
 
-<style scoped>
-.admin-page {
-  padding: 20px;
-  background-color: #f7f7f7;
-  font-family: Arial, sans-serif;
-}
+<style >
 
-.header {
-  display: flex;
-  align-items: center;
-  background-color: #28a745;
-  padding: 10px;
-  color: #fff;
-  border-radius: 5px;
-}
-
-.header .logo img {
-  height: 50px;
-  margin-right: 20px;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-.user-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.user-table th,
-.user-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-
-.user-table th {
-  background-color: #28a745;
-  color: #fff;
-  font-weight: bold;
-}
-
-.user-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.user-table tr:hover {
-  background-color: #f1f1f1;
-}
-</style>
-
-
-
-
+</style >

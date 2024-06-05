@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MisaAsp.Models
+namespace MisaAsp.Models.ViewModel
 {
     public class RegistrationRequest
     {

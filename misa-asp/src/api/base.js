@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Cấu hình axios instance
-const apiClient = axios.create({
+export const apiClient = axios.create({
   baseURL: 'https://localhost:7173/api/',
   headers: {
     'Content-Type': 'application/json'
@@ -9,7 +9,7 @@ const apiClient = axios.create({
 });
 
 // Hàm để lấy token từ localStorage và gắn vào headers của axios
-const setAuthHeader = () => {
+export const setAuthHeader = () => {
   const token = localStorage.getItem('token');
   if (token) {
     apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -20,7 +20,6 @@ const setAuthHeader = () => {
 };
 setAuthHeader();
 
-// Hàm để kiểm tra token và gọi một API yêu cầu xác thực
 export const fetchProtectedData = async () => {
   try {
     console.log('Fetching protected data...');

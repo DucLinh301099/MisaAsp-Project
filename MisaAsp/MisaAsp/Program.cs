@@ -1,4 +1,5 @@
-﻿using MisaAsp.Repositories;
+﻿
+using MisaAsp.Repositories;
 using MisaAsp.Services;
 using Npgsql;
 using System.Data;
@@ -21,9 +22,18 @@ builder.Services.AddCors(options =>
 });
 
 // Đăng ký các dịch vụ cần thiết
-builder.Services.AddScoped<IRegistrationService, RegistrationService>();
-builder.Services.AddScoped<ServiceRepository>();
-builder.Services.AddScoped<DatabaseHelper>();
+#region Đăng kí service
+
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountantService, AccountantService>();
+#endregion
+
+#region Đăng kí Repo
+builder.Services.AddScoped<IBaseRepository, BaseRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountantRepository, AccountantRepository>();
+#endregion
+
 
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>

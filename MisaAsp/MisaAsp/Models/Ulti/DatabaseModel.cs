@@ -1,4 +1,4 @@
-﻿namespace MisaAsp.Models
+﻿namespace MisaAsp.Models.Ulti
 {
     public class ProdParameter
     {

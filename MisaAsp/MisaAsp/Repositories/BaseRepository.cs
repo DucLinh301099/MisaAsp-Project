@@ -8,6 +8,7 @@ namespace MisaAsp.Repositories
 {
     public interface IBaseRepository
     {
+
         Task<int> ExecuteAsync(string sql, object parameters = null);
         Task<IEnumerable<T>> QueryAsync<T>(string sql, object parameters = null);
         Task<T> ExecuteScalarAsync<T>(string sql, object parameters = null);

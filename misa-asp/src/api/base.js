@@ -18,18 +18,5 @@ export const setAuthHeader = () => {
     console.log('No token found in localStorage');
   }
 };
-setAuthHeader();
 
-export const fetchProtectedData = async () => {
-  try {
-    console.log('Fetching protected data...');
-    // Gắn token vào header trước khi thực hiện request
-    setAuthHeader();
-    const response = await apiClient.get('Account/users');
-    console.log('Protected data fetched successfully:', response.data);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching protected data:', error.response ? error.response.data : error.message);
-    throw error.response ? error.response.data : error.message;
-  }
-};
+setAuthHeader();

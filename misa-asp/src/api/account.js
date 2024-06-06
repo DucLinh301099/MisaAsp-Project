@@ -20,6 +20,20 @@ export const login = async (emailOrPhoneNumber, password) => {
   }
 };
 
+export const fetchProtectedData = async () => {
+  try {
+    console.log('Fetching protected data...');
+    // Gắn token vào header trước khi thực hiện request
+    setAuthHeader();
+    const response = await apiClient.get('Account/users');
+    console.log('Protected data fetched successfully:', response.data);
+    return response.data.data; // Đảm bảo trả về đúng data
+  } catch (error) {
+    console.error('Error fetching protected data:', error.response ? error.response.data : error.message);
+    throw error.response ? error.response.data : error.message;
+  }
+};
+
 // API call to register
 export const register = async (firstName, lastName, email, phoneNumber, password) => {
   console.log('Attempting to register user...');

@@ -15,7 +15,7 @@
           <th>Họ Tên</th>
           <th>Email</th>
           <th>Số điện thoại</th>
-          <th></th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
           <td>{{ user.firstName }} {{ user.lastName }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phoneNumber }}</td>
-          <td class="actions">
+          <td>
             <button @click="editUser(user)">Edit</button>
             <button @click="deleteUser(user.id)">Delete</button>
           </td>
@@ -62,9 +62,9 @@
 </template>
 
 <script>
-import { updateUser, deleteUserById } from '../api/account';
-import { fetchProtectedData } from '../api/base';
+import { updateUser, deleteUserById, fetchProtectedData } from '../api/account';
 import '../assets/css/admin.css';
+
 export default {
   name: 'AdminComponent',
   data() {
@@ -78,32 +78,46 @@ export default {
   },
   methods: {
     async loadUsers() {
-      const response = await fetchProtectedData();
-      this.users = response;
+      try {
+        const response = await fetchProtectedData();
+        this.users = response;
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        alert('Failed to fetch user data: ' + (error.response ? error.response.data.message : error.message));
+      }
     },
     editUser(user) {
       this.editingUser = { ...user };
     },
     async saveUser() {
-      const updatedUser = await updateUser(this.editingUser);
-      this.editingUser = null;
-      alert('User updated successfully!');
-      await this.loadUsers(); // Load lại danh sách người dùng sau khi cập nhật thành công
+      try {
+        await updateUser(this.editingUser);
+        this.editingUser = null;
+        alert('User updated successfully!');
+        await this.loadUsers(); // Load lại danh sách người dùng sau khi cập nhật thành công
+      } catch (error) {
+        console.error('Error saving user:', error);
+        alert('Failed to update user: ' + error.message);
+      }
     },
     cancelEdit() {
       this.editingUser = null;
     },
     async deleteUser(id) {
       if (confirm('Are you sure you want to delete this user?')) {
-        await deleteUserById(id);
-        this.users = this.users.filter(user => user.id !== id);
-        alert('User deleted successfully!');
+        try {
+          await deleteUserById(id);
+          this.users = this.users.filter(user => user.id !== id);
+          alert('User deleted successfully!');
+        } catch (error) {
+          console.error('Error deleting user:', error);
+          alert('Failed to delete user: ' + error.message);
+        }
       }
     }
   }
 };
 </script>
 
-<style >
-
-</style >
+<style scoped>
+</style>

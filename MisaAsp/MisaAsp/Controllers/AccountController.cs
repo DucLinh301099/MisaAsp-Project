@@ -85,18 +85,20 @@ namespace MisaAsp.Controllers
         }
 
         [HttpGet("users")]
-
         public async Task<IActionResult> GetUsers()
         {
             var users = await _accountService.GetAllUsersAsync();
+            var res = new ResOutput();
 
-            if (users != null)
+            if (users != null && users.Any())
             {
-                return Ok(users);
+                res.HandleSuccess("Lấy thông tin người dùng thành công", users);
+                return Ok(res);
             }
             else
             {
-                return StatusCode(500, "An error occurred while retrieving users.");
+                res.HandleError("Lấy thông tin người dùng thất bại");
+                return BadRequest(res);
             }
         }
 

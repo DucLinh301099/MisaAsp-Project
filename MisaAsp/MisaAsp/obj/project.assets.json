@@ -1536,11 +1536,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
+      "projectUniqueName": "C:\\Users\\vdlinh\\source\\repos\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
       "projectName": "MisaAsp",
-      "projectPath": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
+      "projectPath": "C:\\Users\\vdlinh\\source\\repos\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
       "packagesPath": "C:\\Users\\vdlinh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\MisaAsp-Project\\MisaAsp\\MisaAsp\\obj\\",
+      "outputPath": "C:\\Users\\vdlinh\\source\\repos\\MisaAsp-Project\\MisaAsp\\MisaAsp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vdlinh\\AppData\\Roaming\\NuGet\\NuGet.Config",

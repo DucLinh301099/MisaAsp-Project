@@ -48,9 +48,17 @@
 }
 
 .nav-item.dropdown > a::after {
-  content: '\25BC';
+  content: '';
   margin-left: 8px;
   font-size: 0.8em;
+  background: transparent url(/src/assets/image/ASP_icon_Sprites.svg) no-repeat -813px -428px;
+
+  background-color: rgba(255,255,255,0);
+    width: 16px;
+    height: 20px;
+    margin-left: 8px;
+    content: "";
+    position: absolute;
 }
 
 .dropdown-menu {
@@ -96,7 +104,9 @@
 .auth-buttons {
   display: flex;
   gap: 10px;
+  margin-left: 40px ;
 }
+
 
 .btn {
   padding: 10px 20px;
@@ -116,6 +126,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #70767a
 }
 
 .register {
@@ -125,6 +136,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.auth-buttons .btn {
+  border: 1px solid #d4d7dc;
+  width: 80px;
 }
 
 .login:hover, .register:hover {

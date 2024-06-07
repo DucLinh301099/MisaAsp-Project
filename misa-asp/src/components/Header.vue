@@ -83,6 +83,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
 }
 
 .logo {
@@ -108,17 +109,25 @@ export default {
 
 .nav-item a {
   text-decoration: none;
-  color: #333;
-  font-weight: 600;
+  color: #70767a;
+  font-weight: 500;
   padding: 10px 0;
   display: inline-block;
   font-size: 16px; /* Adjusted for better alignment */
 }
 
 .nav-item.dropdown > a::after {
-  content: '\25BC';
+  content: '';
   margin-left: 8px;
   font-size: 0.8em;
+  background: transparent url(/src/assets/image/ASP_icon_Sprites.svg) no-repeat -813px -428px;
+
+  background-color: rgba(255,255,255,0);
+    width: 16px;
+    height: 20px;
+    margin-left: 8px;
+    content: "";
+    position: absolute;
 }
 
 .dropdown-menu {
@@ -164,7 +173,9 @@ export default {
 .auth-buttons {
   display: flex;
   gap: 10px;
+  margin-left: 40px ;
 }
+
 
 .btn {
   padding: 10px 20px;
@@ -184,6 +195,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #70767a
 }
 
 .register {
@@ -193,6 +205,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.auth-buttons .btn {
+  border: 1px solid #d4d7dc;
+  width: 80px;
 }
 
 .login:hover, .register:hover {

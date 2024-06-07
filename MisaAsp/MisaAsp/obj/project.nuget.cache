@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "utQVnFncDTkFvBTlg3Gc+0YeQBhtyXiGL2hF0X2tW/k29iHNrEx1HxaqIqZ/WPcTNunNn6MWWeBF0GIW5wj1WQ==",
+  "dgSpecHash": "UU8ICjgvLkUgUoVJTtc7seuqXJcAx+Bsf/8g1Wuup5BbGuRTRgcqYAIN+VjcycPNM+kkF2kvJoOdOBGLjU371w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vdlinh\\source\\repos\\Vuejs\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
+  "projectFilePath": "C:\\Users\\vdlinh\\source\\repos\\MisaAsp-Project\\MisaAsp\\MisaAsp\\MisaAsp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vdlinh\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\vdlinh\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.6\\microsoft.aspnetcore.authentication.jwtbearer.8.0.6.nupkg.sha512",

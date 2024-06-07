@@ -1,35 +1,41 @@
 <template>
   <div>
     <!-- Stats Section -->
-    <div class="stats-container">
-      <div class="search-bar">
+     <div class="stats-container">
+    <div class="search-bar">
+      <div class="search-div">
+        <div class="pre-icon service-icon-search"></div>
         <input type="text" placeholder="Dịch vụ cần tìm" v-model="searchQuery" class="search-input" />
+      </div>
+      
+      <div class="location-select-wrapper">
+        <div class="pre-icon location-icon"></div>
         <select v-model="selectedLocation" class="location-select">
           <option value="">Tỉnh/Thành phố</option>
-          <!-- Add options for locations here -->
+          <option v-for="city in cities" :key="city" :value="city">{{ city }}</option>
         </select>
-        <button @click="search">Tìm kế toán</button>
       </div>
-      <div class="stats">
-        <div class="stat">
-          <h3>20.592</h3>
-          <p>Doanh nghiệp được kết nối</p>
-        </div>
-        <div class="stat">
-          <h3>1.836</h3>
-          <p>Hộ kinh doanh được kết nối</p>
-        </div>
-        <div class="stat">
-          <h3>1.677</h3>
-          <p>Đại lý thuế, kế toán dịch vụ</p>
-        </div>
-        <div class="stat">
-          <h3>55.571</h3>
-          <p>Người dùng</p>
-        </div>
+      <button @click="search">Tìm kế toán</button>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <h3>20.592</h3>
+        <p>Doanh nghiệp được kết nối</p>
+      </div>
+      <div class="stat">
+        <h3>1.836</h3>
+        <p>Hộ kinh doanh được kết nối</p>
+      </div>
+      <div class="stat">
+        <h3>1.677</h3>
+        <p>Đại lý thuế, kế toán dịch vụ</p>
+      </div>
+      <div class="stat">
+        <h3>55.571</h3>
+        <p>Người dùng</p>
       </div>
     </div>
-    
+  </div>
     <!-- Video Section -->
     <div class="video-section">
       <div class="video-container">
@@ -54,9 +60,22 @@ export default {
   data() {
     return {
       searchQuery: '',
-      selectedLocation: ''
     };
   },
+  data() {
+    return {
+      selectedLocation: '',
+      cities: [
+        'Hà Nội',
+        'Hồ Chí Minh',
+        'Đà Nẵng',
+        'Hải Phòng',
+        'Cần Thơ',
+        // Thêm các thành phố khác vào đây
+      ]
+    }
+  },
+
   methods: {
     search() {
       // Handle the search functionality

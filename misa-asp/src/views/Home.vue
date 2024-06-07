@@ -1,7 +1,8 @@
 <template>
   <div>
+    <Header />
     <div id="app" class="app-container">
-      <Header />
+      
       <div class="main-content">
         <Section />
       </div>
@@ -37,10 +38,6 @@ export default {
 .app-container {
   padding-top: 80px;
   /* Adjust this value based on the height of your header */
-}
-
-.main-content {
-  padding: 20px;
 }
 
 /* Global styles for the Home view */

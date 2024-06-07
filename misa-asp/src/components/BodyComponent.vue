@@ -1,8 +1,10 @@
 <template>
   <div class="body-component">
-    <h2>Kế toán dịch vụ tiêu biểu</h2>
+    <h1>Kế Toán Dịch Vụ Tiêu Biểu</h1>
     <div class="filters">
-      <input type="text" v-model="searchQuery" placeholder="Tìm kiếm dịch vụ" class="search-input" />
+      <div>
+        <input type="text" v-model="searchQuery" placeholder="Tìm kiếm dịch vụ" class="search-input" />
+      </div>
       <div class="filter-buttons">
         <button v-for="filter in filters" :key="filter" :class="{ active: selectedFilter === filter }" @click="selectedFilter = filter">
           {{ filter }}
@@ -31,9 +33,9 @@
       <button @click="onPrevPage" :disabled="currentPage === 1">Trước</button>
       <button @click="onNextPage" :disabled="currentPage === totalPages">Sau</button>
     </div>
-    <div class="view-all">
+    <!-- <div class="view-all">
       <a href="#">Xem tất cả</a>
-    </div>
+    </div> -->
   </div>
 </template>
 

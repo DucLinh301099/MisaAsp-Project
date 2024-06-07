@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  padding: 50px 200px;
   background-color: #00a65a;
   color: white;
 }
@@ -12,12 +12,17 @@
 }
 
 .contact-info h2 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
+  text-align: left;
+  color: #fff;
+}
+.h2{
+  text-align: left;
 }
 
 .contact-info p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .contact-form {
@@ -30,8 +35,9 @@
 }
 
 .contact-form h3 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .form-group {

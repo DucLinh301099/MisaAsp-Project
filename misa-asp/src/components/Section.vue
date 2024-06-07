@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="cta">
-        <h2>Nền tảng kế toán dịch vụ</h2>
+        <h2>Nền Tảng kế Toán Dịch Vụ</h2>
         <p>MISA ASP là nền tảng kết nối dịch vụ giúp kết nối doanh nghiệp, hộ kinh doanh, cá nhân kinh doanh có nhu cầu thuê dịch vụ kế toán với tổ chức cung ứng dịch vụ kế toán, thuế uy tín, chất lượng, chuyên nghiệp trên toàn quốc.</p>
         <button>Nhận tư vấn miễn phí</button>
       </div>

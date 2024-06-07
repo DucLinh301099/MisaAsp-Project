@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using MisaAsp.Models.Ulti;
 using MisaAsp.Models.ViewModel;
 using MisaAsp.Services;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MisaAsp.Controllers
@@ -19,6 +21,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpPost("register")]
+        [AllowAnonymous] // Cho phép truy cập không cần xác thực
         public async Task<IActionResult> Register([FromBody] RegistrationRequest request)
         {
             var res = new ResOutput();
@@ -52,6 +55,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
             var res = new ResOutput();
@@ -85,6 +89,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpGet("users")]
+        //[Authorize(Roles = "admin")] // Chỉ admin mới được truy cập
         public async Task<IActionResult> GetUsers()
         {
             var users = await _accountService.GetAllUsersAsync();
@@ -103,6 +108,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpPut("users/{id}")]
+        //[Authorize(Roles = "user")] // Chỉ admin mới được truy cập
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUser user)
         {
             var res = new ResOutput();
@@ -136,6 +142,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpDelete("users/{id}")]
+       // [Authorize(Roles = "admin")] // Chỉ admin mới được truy cập
         public async Task<IActionResult> DeleteUser(int id)
         {
             var res = new ResOutput();
@@ -162,6 +169,7 @@ namespace MisaAsp.Controllers
         }
 
         [HttpPost("forgot-password")]
+        [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
         {
             var res = new ResOutput();

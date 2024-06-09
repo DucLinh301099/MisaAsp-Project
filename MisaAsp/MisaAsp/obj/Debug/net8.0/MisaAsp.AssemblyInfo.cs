@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MisaAsp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc35b5747b2f18536de86a625c8e2d091354ed52")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c312f0bfc12943401c9881936ec98c6e51105155")]
 [assembly: System.Reflection.AssemblyProductAttribute("MisaAsp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MisaAsp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

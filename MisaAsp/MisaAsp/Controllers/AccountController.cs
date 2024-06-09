@@ -35,6 +35,7 @@ namespace MisaAsp.Controllers
                 else
                 {
                     var userId = await _accountService.RegisterUserAsync(request);
+                    
                     if (userId > 0)
                     {
                         res.HandleSuccess("Đăng kí thành công", new { UserId = userId });

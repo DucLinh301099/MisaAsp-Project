@@ -4,7 +4,7 @@
       <div class="logo-section">
         <router-link to="/">
           <img
-            src="C:\Users\vdlinh\source\repos\Vuejs\Day5\MisaAsp-Project\29-05-2024\misa-asp\src\assets\image\logo123.jpg"
+            src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg"
             alt="MISA ASP Logo" class="main-logo" />
         </router-link>
       </div>

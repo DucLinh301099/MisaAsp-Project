@@ -1,6 +1,7 @@
 .body-component {
   padding: 20px;
   background-color: #f5f5f5;
+  font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -60,6 +61,8 @@ h1 {
 }
 
 .service-logo {
+  padding: 10px;
+  border: 1px solid #d2d7e1;
   width: 50px;
   height: 50px;
   margin-right: 20px;
@@ -72,14 +75,16 @@ h1 {
 
 .service-details h3 {
   margin: 0 0 10px;
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
 }
 
 .rating {
+  font-size: 12px;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  color: #666;
 }
 
 .star {
@@ -98,8 +103,10 @@ h1 {
 }
 
 .price {
-  font-weight: bold;
-  color: #333;
+  font-weight: 600;
+    color: #707070;
+    font-size: 13px;
+    line-height: 13px;
 }
 
 .pagination {

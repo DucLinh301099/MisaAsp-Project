@@ -1,6 +1,9 @@
 <template>
   <div class="body-component">
+   <div class="title"> 
     <h1>Kế Toán Dịch Vụ Tiêu Biểu</h1>
+   </div>
+    
     <div class="filters">
       <div>
         <input type="text" v-model="searchQuery" placeholder="Tìm kiếm dịch vụ" class="search-input" />
@@ -16,11 +19,13 @@
         <img :src="service.logo" alt="Service Logo" class="service-logo" />
         <div class="service-details">
           <h3>{{ service.name }}</h3>
-          <div class="rating" v-if="service.rating > 0">
-            <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= service.rating }">&#9733;</span>
-            <span>{{ service.reviews }} Đánh giá</span>
+          <div class="rating">
+            <div v-if="service.rating > 0">
+              <span v-for="star in 5" :key="star" class="star" :class="{ filled: star <= service.rating }">&#9733;</span>
+              <span>{{ service.reviews }} Đánh giá</span>
+            </div>
+            <div v-else>Chưa có đánh giá</div>
           </div>
-          <div v-else>Chưa có đánh giá</div>
           <div class="info">
             <span>{{ service.customers }} khách hàng</span>
             <span>{{ service.location }}</span>
@@ -33,15 +38,13 @@
       <button @click="onPrevPage" :disabled="currentPage === 1">Trước</button>
       <button @click="onNextPage" :disabled="currentPage === totalPages">Sau</button>
     </div>
-    <!-- <div class="view-all">
-      <a href="#">Xem tất cả</a>
-    </div> -->
   </div>
 </template>
 
 <script>
 import { getServices, filterServices, prevPage, nextPage } from '../api/accountant';
-import '../assets/css/body.css';
+
+
 export default {
   name: 'BodyComponent',
   data() {
@@ -82,5 +85,140 @@ export default {
 </script>
 
 <style scoped>
+.body-component {
+  padding: 20px;
+  background-color: #f5f5f5;
+  font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+}
 
+
+.title{
+  text-align: left;
+  padding-left: 120px;
+}
+
+.filters {
+    display: flex;  
+    margin-top: 25px;
+    margin-bottom: 9px;
+    justify-content: space-between;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.search-input {
+  padding: 10px;
+  border: 0;
+  border-radius: 4px;
+  margin-right: 20px;
+  width: 300px;
+}
+
+.filter-buttons {
+  display: flex;
+}
+
+.filter-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.service-list {
+  padding-left: 120px;
+  padding-right: 120px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 20px;
+  justify-content: center;
+}
+
+.service-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.service-logo {
+  padding: 10px;
+  border: 1px solid #d2d7e1;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.service-details {
+  flex: 1;
+}
+
+.service-details h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.rating {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.star {
+  color: #ccc;
+}
+
+.star.filled {
+  color: #FFD700;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.price {
+  font-weight: 600;
+  color: #707070;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.pagination button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
 </style>

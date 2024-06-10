@@ -1,0 +1,200 @@
+.for-accountant {
+    margin-top: 80px;
+}
+.for-accountant {
+    display: flex;
+    column-gap: 49px;
+    flex-wrap: wrap;
+}
+  .advantages {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 50px;
+    z-index: 2;
+  }
+  
+  .for-bussiness.bussiness-container {
+    display: flex;
+    column-gap: 49px;
+}
+  
+   .for-bussiness .left-side, .for-accountant .left-side {
+    min-width: 330px;
+    flex: 1;
+  }
+  
+  .advantages .for-bussiness .left-side .title {
+    width: 100%;
+    font-size: 36px;
+    line-height: 36px;
+    font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    max-width: 545px;
+  }
+  
+  .advantages .for-bussiness .left-side .reason-group {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+    row-gap: 24px;
+  }
+  
+  .advantages .for-bussiness .left-side .reason-group>div {
+    display: flex;
+    column-gap: 25px;
+    align-items: flex-start;
+  }
+  
+  .panel-default {
+    border: unset !important;
+  }
+  
+  .reason-group .advantages-icon {
+    min-height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: url(https://asp.misa.vn/Content/Images/SVG/Icon_spirte.svg) no-repeat 0 -202px;
+  }
+  
+  .home-page .advantages .for-bussiness .content {
+    line-height: 24px;
+    font-size: 16px;
+    text-align: justify;
+  }
+  
+  .advantages .for-bussiness .left-side .action-group {
+    height: auto;
+    width: 100%;
+    display: flex;
+    margin: 32px 0 0 0;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+   .action-group button {
+    width: 213px;
+    line-height: 14px;
+    background-color: #349b2a;
+    border-radius: 4px;
+    font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px !important;
+    min-width: 210px;
+    margin-left: 0;
+    white-space: nowrap;
+  }
+  
+  .to-form-footer {
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 9px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    min-width: 150px;
+    padding: 0 23px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+  }
+  
+  .to-form-footer-home, .to-form-footer-home:focus {
+    outline: unset !important;
+    border: unset !important;
+  }
+  
+ .learn-more {
+    line-height: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #2680eb;
+    font-weight: 100;
+    height: 40px;
+    width: fit-content;
+    
+}
+a, .td-page-content a {
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+}
+a {
+    background-color: transparent;
+    color: #4db2ec
+}
+  
+  .right-side-advantage {
+    width: 585px;
+    height: 453px;
+    z-index: 9;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main-image {
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+  }
+  
+  element.style {
+    position: relative;
+}
+  
+  .pop-image, .pop-image-group, pop-image-subgroup {
+    position: absolute;
+}
+.p-img-1 {
+    top: 28px;
+    left: 27px;
+}
+.p-img-2 {
+    top: 260px;
+    left: 0;
+}
+.p-img-3 {
+    top: 320px;
+    left: 150px;
+}
+.p-img-4 {
+    top: 320px;
+    left: 0;
+}
+.p-img-5 {
+    top: 380px;
+    left: 0;
+}
+.pulse-animation {
+    animation-name: pulse;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+}
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+img {
+    border: 0;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    border: 0;
+}

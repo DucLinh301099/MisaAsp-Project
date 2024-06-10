@@ -2,21 +2,21 @@
   <div>
     <!-- Stats Section -->
      <div class="stats-container">
-    <div class="search-bar">
-      <div class="search-div">
+      <div class="search-bar">
+       <div class="search-div">
         <div class="pre-icon service-icon-search"></div>
         <input type="text" placeholder="Dịch vụ cần tìm" v-model="searchQuery" class="search-input" />
-      </div>
+       </div>
       
-      <div class="location-select-wrapper">
+       <div class="location-select-wrapper">
         <div class="pre-icon location-icon"></div>
-        <select v-model="selectedLocation" class="location-select">
+         <select v-model="selectedLocation" class="location-select">
           <option value="">Tỉnh/Thành phố</option>
           <option v-for="city in cities" :key="city" :value="city">{{ city }}</option>
         </select>
+       </div>
+       <button @click="search">Tìm kế toán</button>
       </div>
-      <button @click="search">Tìm kế toán</button>
-    </div>
     <div class="stats">
       <div class="stat">
         <h3>20.592</h3>
@@ -39,7 +39,7 @@
     <!-- Video Section -->
     <div class="video-section">
       <div class="video-container">
-        <img src="C:\Users\vdlinh\source\repos\Vuejs\Day3\misa-asp\src\assets\image\image2.png" alt="Video Thumbnail" class="video-thumbnail" />
+        <img src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\image2.png" alt="Video Thumbnail" class="video-thumbnail" />
         <div class="play-button">
           <svg width="50" height="50" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
         </div>

@@ -3,7 +3,7 @@
     <div class="header">
       <router-link to="/" class="logo">
         <img
-          src="C:/Users/vdlinh/source/repos/Vuejs/MisaAsp-Project/misa-asp/src/assets/image/logo123.jpg"
+          src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg"
           alt="Logo" />
       </router-link>
       <h1>Quản lý người dùng</h1>

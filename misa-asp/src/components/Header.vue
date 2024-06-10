@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <img src="C:\Users\vdlinh\source\repos\Vuejs\Day3\misa-asp\src\assets\image\logo123.jpg" alt="MISA ASP Logo" class="logo" />
+      <img src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg" alt="MISA ASP Logo" class="logo" />
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="#">Tìm kế toán</a></li>
@@ -208,7 +208,7 @@ export default {
 }
 .auth-buttons .btn {
   border: 1px solid #d4d7dc;
-  width: 80px;
+  /* width: 80px; */
 }
 
 .login:hover, .register:hover {

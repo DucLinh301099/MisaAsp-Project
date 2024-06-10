@@ -139,7 +139,7 @@
 }
 .auth-buttons .btn {
   border: 1px solid #d4d7dc;
-  width: 80px;
+  /* width: 80px; */
 }
 
 .login:hover, .register:hover {

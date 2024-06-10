@@ -8,6 +8,7 @@ import AdminComponent from '../components/AdminComponent.vue'; // Import AdminCo
 const routes = [
   { path: '/', component: Home },
   { path: '/login', component: LoginComponent },
+  
   { path: '/register', component: RegisterComponent },
   { path: '/admin', component: AdminComponent , meta: { requiresAuth: true }},  // Add route for AdminComponent
    { path: '/forgot-password', component: ForgotPasswordComponent }

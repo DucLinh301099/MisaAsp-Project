@@ -10,8 +10,8 @@
       
        <div class="location-select-wrapper">
         <div class="pre-icon location-icon"></div>
-         <select v-model="selectedLocation" class="location-select">
-          <option value="">Tỉnh/Thành phố</option>
+         <select v-model="selectedLocation" class="location-select ">
+          <option  value="">Tỉnh/Thành phố</option>
           <option v-for="city in cities" :key="city" :value="city">{{ city }}</option>
         </select>
        </div>
@@ -39,10 +39,10 @@
     <!-- Video Section -->
     <div class="video-section">
       <div class="video-container">
-        <img src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\image2.png" alt="Video Thumbnail" class="video-thumbnail" />
-        <div class="play-button">
+        <img src="https://asp.misa.vn/Content/Images/PNG/Home/Home_New/icon/bg_video.png" alt="Video Thumbnail" class="video-thumbnail" />
+        <!-- <div class="play-button">
           <svg width="50" height="50" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
-        </div>
+        </div> -->
       </div>
       <div class="cta">
         <h2>Nền Tảng kế Toán Dịch Vụ</h2>

@@ -98,14 +98,14 @@ namespace MisaAsp.Services
                 //if (listRole != null && listRole.Count() > 0)
                 //{
                 //    foreach (var role in listRole)
-                 //   {
-                 //       if (role != null && !string.IsNullOrEmpty(role.RoleName))
-                  //      {
-                 //           tokenDescription?.Subject.AddClaim(new Claim(Role, role.RoleName));
-                            
-                  //      }
-                 //   }
-               /// }
+                //    {
+                //        if (role != null && !string.IsNullOrEmpty(role.RoleName))
+                //        {
+                //            tokenDescription?.Subject.AddClaim(new Claim(Role, role.RoleName));
+
+                //        }
+                //    }
+                //}
 
 
                 var token = jwtTokenHandler.CreateToken(tokenDescription);

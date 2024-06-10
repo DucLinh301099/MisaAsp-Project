@@ -8,22 +8,27 @@
 
 .login-container {
   background-color: #fff;
-  padding: 40px;
+  padding: 20px 40px 40px 40px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 400px;
 }
-
-.logo-section {
+.error-message {
+    display: none;
+    color: #F45D48;
+    bottom: 8px;
+    font-size: 12px;
+}
+.logo-section-login {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.main-logo {
-  height: 60px;
+.main-logo1 {
+  height: 50px;
 }
 
 h2 {

@@ -15,15 +15,15 @@
   width: 400px;
 }
 
-.logo-section {
+.logo-section-register {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.main-logo {
-  height: 60px;
+.main-logo2 {
+  height: 50px;
 }
 
 .misa-logo {

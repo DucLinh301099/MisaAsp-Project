@@ -1,14 +1,23 @@
 <template>
   <div class="register-page">
     <div class="register-container">
-      <div class="logo-section">
+      <div class="logo-section-register">
         <router-link to="/">
           <img
-            src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg"
-            alt="MISA ASP Logo" class="main-logo" />
+            src="https://asp.misa.vn/Content/Images/SVG/Logo.svg"
+            alt="MISA ASP Logo" class="main-logo2" />
         </router-link>
       </div>
-      <h2>Đăng ký</h2>
+      <div class="main-title mt-3">
+             <div class="row">
+                 <div class="col-6-1">
+                     <span class="bold">Đăng Ký</span>
+                   </div>
+                    <div class="col-6-2">
+                   <img src="https://asp.misa.vn/App/Content/images/Logo2.png" class="float-right">
+                    </div>
+               </div>
+         </div>
       <form @submit.prevent="register">
         <div class="form-group">
           <input type="text" v-model="firstName" placeholder="Họ" required />
@@ -28,7 +37,12 @@
           <input type="password" v-model="password" placeholder="Mật khẩu" required />
         </div>
         <button type="submit" class="register-button">Đăng ký</button>
-        <div v-if="generalError" class="error">{{ generalError }}</div>
+        <div v-if="generalError" class="error">{{ generalError }}
+        </div>
+        <div class="extra-links">
+        <p>Bạn đã có tài khoản? <router-link to="/login">Đăng Nhập</router-link></p>
+        <p><router-link to="/href">Trợ giúp</router-link></p>
+      </div>
       </form>
     </div>
   </div>
@@ -83,5 +97,41 @@ export default {
 </script>
 
 <style scoped>
-
+.bold{
+  font-weight: 550;
+}
+  .main-title {
+    font-family: AvertaStdCY_Semibold, Helvetica, Arial, sans-serif;
+    font-size: 20px !important;
+}
+.mt-3, .my-3 {
+    margin-top: 1rem !important;
+}
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-bottom: 15px;
+    
+}
+.col-6-1 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    text-align: left;
+}
+.col-6-2 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    
+}
+.float-right {
+    float: right !important;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+}
 </style>

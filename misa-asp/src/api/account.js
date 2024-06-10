@@ -1,4 +1,3 @@
-
 import { apiClient, setAuthHeader } from './base';
 
 export const login = async (emailOrPhoneNumber, password) => {
@@ -8,12 +7,18 @@ export const login = async (emailOrPhoneNumber, password) => {
       EmailOrPhoneNumber: emailOrPhoneNumber,
       Password: password
     });
-    // Lưu token vào localStorage
-    localStorage.setItem('token', response.data.token);
-    console.log('User logged in successfully. Token received:', response.data.token);
-    // Gắn token vào header
-    setAuthHeader();
-    return response.data;
+
+    if (response.status === 200) { // Đảm bảo rằng đăng nhập thành công
+      // Lưu token vào localStorage
+      localStorage.setItem('token', response.data.data.token);
+      console.log('User logged in successfully. Token received:', response.data.data.token);
+      // Gắn token vào header
+      setAuthHeader();
+      return response.data;
+    } else {
+      console.error('Login failed:', response.data);
+      throw new Error('Login failed');
+    }
   } catch (error) {
     console.error('Error logging in:', error.response ? error.response.data : error.message);
     throw error.response ? error.response.data : error.message;

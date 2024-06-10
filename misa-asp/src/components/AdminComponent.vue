@@ -3,7 +3,7 @@
     <div class="header">
       <router-link to="/" class="logo">
         <img
-          src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg"
+          src="https://asp.misa.vn/Content/Images/SVG/Logo.svg"
           alt="Logo" />
       </router-link>
       <h1>Quản lý người dùng</h1>
@@ -15,7 +15,7 @@
           <th>Họ Tên</th>
           <th>Email</th>
           <th>Số điện thoại</th>
-          <th>Action</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,8 +25,8 @@
           <td>{{ user.email }}</td>
           <td>{{ user.phoneNumber }}</td>
           <td>
-            <button @click="editUser(user)">Edit</button>
-            <button @click="deleteUser(user.id)">Delete</button>
+            <button @click="editUser(user)">Sửa</button>
+            <button @click="deleteUser(user.id)">Xóa</button>
           </td>
         </tr>
       </tbody>
@@ -36,14 +36,14 @@
     <div v-if="editingUser" class="modal">
       <div class="modal-content">
         <span class="close" @click="cancelEdit">&times;</span>
-        <h2>Edit User</h2>
+        <h2>Chỉnh Sửa Thông Tin</h2>
         <form @submit.prevent="saveUser">
           <div class="form-group">
-            <label>First Name</label>
+            <label>Họ Tên</label>
             <input type="text" v-model="editingUser.firstName" required>
           </div>
           <div class="form-group">
-            <label>Last Name</label>
+            <label>Tên</label>
             <input type="text" v-model="editingUser.lastName" required>
           </div>
           <div class="form-group">
@@ -51,10 +51,10 @@
             <input type="email" v-model="editingUser.email" required>
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
+            <label>Số Điện Thoại</label>
             <input type="text" v-model="editingUser.phoneNumber" required>
           </div>
-          <button type="submit">Save</button>
+          <button type="submit">Lưu</button>
         </form>
       </div>
     </div>

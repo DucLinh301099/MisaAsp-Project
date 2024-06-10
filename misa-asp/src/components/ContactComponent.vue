@@ -11,15 +11,15 @@
       <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="name">Họ và tên *</label>
-          <input type="text" id="name" v-model="form.name" required />
+          <input class="form-control" type="text" id="name" v-model="form.name" required />
         </div>
         <div class="form-group">
           <label for="phone">Số điện thoại *</label>
-          <input type="tel" id="phone" v-model="form.phone" required />
+          <input class="form-control" type="tel" id="phone" v-model="form.phone" required />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" v-model="form.email" />
+          <input class="form-control" type="email" id="email" v-model="form.email" />
         </div>
         <div class="form-group">
           <label>Bạn là ai?</label>
@@ -32,12 +32,14 @@
         </div>
         <div class="form-group">
           <label for="message">Nội dung cần tư vấn</label>
-          <textarea id="message" v-model="form.message" placeholder="Vui lòng nhập nội dung bạn cần tư vấn tại đây"></textarea>
+          <textarea class="form-control" id="message" v-model="form.message" placeholder="Vui lòng nhập nội dung bạn cần tư vấn tại đây"></textarea>
         </div>
         <p class="disclaimer">
           Bằng cách bấm vào nút Nhận tư vấn miễn phí, bạn đã đồng ý với <a href="#">Chính sách quyền riêng tư</a> của MISA.
         </p>
-        <button type="submit" class="submit-btn">Nhận tư vấn miễn phí</button>
+        <div class="form-footer">
+          <button type="submit" class="primary">Nhận tư vấn miễn phí</button>
+        </div>
       </form>
     </div>
   </div>
@@ -45,6 +47,7 @@
 
 <script>
 import '../assets/css/contact.css';
+
 export default {
   name: 'ContactComponent',
   data() {
@@ -67,6 +70,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 </style>

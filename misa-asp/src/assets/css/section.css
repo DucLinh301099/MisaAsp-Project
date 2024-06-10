@@ -1,7 +1,8 @@
 .stats-container {
   text-align: center;
-  padding: 50px 20px;
-  background: linear-gradient(to right, #007a5a, #00a65a);
+  padding: 80px 20px 50px 20px;
+
+  background-image: url(https://asp.misa.vn/Content/Images/PNG/Home/Home_New/icon/bg_Counting.png);
   color: white;
   font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
 }
@@ -12,7 +13,7 @@
   align-items: center;
   background-color: white;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0 auto 20px auto;
   max-width: 1170px;
@@ -25,31 +26,45 @@
 }
 
 .search-div {
-  margin-right: 10px;
+  margin-right: 150px;
 }
 
 .location-select-wrapper {
   margin-right: 10px;
+  margin-left: 200px;
+  border: 1px solid #ccc;
+   border-right: none;
+  border-bottom: none;
+  border-top: none;
+
 }
 
 .pre-icon {
   width: 24px;
   height: 24px;
   margin-right: 10px;
+  margin-left: 5px;
 }
 
 .service-icon-search {
-  background: url('/path/to/search-icon.png') no-repeat center center;
-  background-size: contain;
+  
+    background: url(https://asp.misa.vn/Content/Images/SVG/ic_sprites_2.svg) no-repeat -762px -1736px;
+    width: 24px;
+    height: 24px;
+    left: 20px !important;
 }
 
 .location-icon {
-  background: url('/path/to/location-icon.png') no-repeat center center;
-  background-size: contain;
+  background: url(https://asp.misa.vn/Content/Images/SVG/ic_sprites_3.svg) no-repeat -619px -1300px;
+    width: 24px;
+    height: 24px;
+    margin: 10px 0px 10px  15px;
+    
+    
 }
 
 .search-input {
-  padding: 10px;
+  padding: 10px 20px 10px 0px;
   border: 0;
   border-radius: 4px;
   flex: 1;
@@ -57,7 +72,7 @@
 
 .location-select {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   
   outline: none;
   font-size: 14px;
@@ -81,8 +96,10 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 20px;
+ 
 }
 
 .stat {
@@ -93,7 +110,7 @@
 }
 
 .stat h3 {
-  font-size: 2.8em;
+  font-size: 3.5em;
   margin: 0;
 }
 
@@ -108,15 +125,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px 150px;
+  margin: 70px 150px;
   background-color: #fff;
   flex-wrap: wrap;
+  column-gap: 29px;
 }
 
 .video-container {
   position: relative;
-  max-width: 50%;
+  max-width: 70%;
   flex: 1;
+  padding-left: 180px;
 }
 
 .video-thumbnail {
@@ -149,6 +168,7 @@
   flex: 1;
   padding: 20px;
   font-family: AvertaStdCY, Helvetica, Arial, sans-serif;
+  padding-right: 210px;
   
 }
 .h1{
@@ -164,19 +184,22 @@
 }
 
 .cta p {
-  font-size: 18px;
-  color: #666;
+  font-size: 16px;
+  color: #333;
   margin-bottom: 20px;
+  text-align: justify;
       
 }
 
 .cta button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #4CAF50;
-  color: #fff;
-  cursor: pointer;
-  font-size: 16px;
+ height: 42px;
+    width: 222px;
+    background-color: #31a035;
+    border-radius: 5px;
+    border: unset;
+    outline: unset;
+    font-size: inherit !important;
+    color: #fff;
+    
 }
 

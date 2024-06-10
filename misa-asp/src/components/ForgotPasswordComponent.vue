@@ -3,7 +3,7 @@
         <div class="forgot-password-container">
             <div class="logo-section">
                 <router-link to="/">
-                    <img src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg"
+                    <img src="https://asp.misa.vn/Content/Images/SVG/Logo.svg"
                         alt="MISA ASP Logo" class="main-logo" />
                 </router-link>
             </div>

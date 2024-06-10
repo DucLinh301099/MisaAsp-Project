@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container">
-      <img src="D:\VueJs\MisaAsp-Project\misa-asp\src\assets\image\logo123.jpg" alt="MISA ASP Logo" class="logo" />
+      <img src="https://asp.misa.vn/Content/Images/SVG/Logo.svg" alt="MISA ASP Logo" class="logo" />
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><a href="#">Tìm kế toán</a></li>

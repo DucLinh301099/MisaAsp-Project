@@ -26,17 +26,28 @@
             </div>
             <div v-else>Chưa có đánh giá</div>
           </div>
-          <div class="info">
+          <div class="group-accounting">
+                 <div class="accounting-total-customer flex-row">
+                      <div class="icon-customer"></div>
+                      <div class="accounting-total-customer-label">{{ service.customers }}khách hàng</div>
+                </div>
+                        
+                <div class="accounting-address flex-row">
+                 <div class="icon-address"></div>
+                 <div class="accounting-address-label">{{ service.location }}</div>
+               </div>
+            </div>
+          <!-- <div class="info">
             <span>{{ service.customers }} khách hàng</span>
             <span>{{ service.location }}</span>
-          </div>
+          </div> -->
           <div class="price">Từ {{ service.price }}</div>
         </div>
       </div>
     </div>
     <div class="pagination">
-      <button @click="onPrevPage" :disabled="currentPage === 1">Trước</button>
-      <button @click="onNextPage" :disabled="currentPage === totalPages">Sau</button>
+      <!-- <button @click="onPrevPage" :disabled="currentPage === 1">Trước</button>
+      <button @click="onNextPage" :disabled="currentPage === totalPages">Sau</button> -->
     </div>
   </div>
 </template>
@@ -85,6 +96,37 @@ export default {
 </script>
 
 <style scoped>
+.group-accounting {
+    display: flex;
+    column-gap: 7px;
+    line-height: 15px;
+    font-size: 13px;
+    color: #707070;
+    column-gap: 7px;
+    row-gap: 15px;
+    padding-bottom: 5px;
+}
+.accounting-total-customer {
+    width: 117px;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    flex-wrap: wrap;
+}
+.icon-customer {
+    background: transparent url(https://asp.misa.vn/Content/Images/SVG/ic_user.svg) no-repeat;
+    background-position: center center;
+    width: 16px;
+    height: 16px;
+}
+.icon-address {
+    background: transparent url(https://asp.misa.vn/Content/Images/SVG/ic_address.svg) no-repeat;
+    background-position: center center;
+    width: 16px;
+    height: 16px;
+}
 .body-component {
   padding: 20px;
   background-color: #f5f5f5;
@@ -94,7 +136,8 @@ export default {
 
 .title{
   text-align: left;
-  padding-left: 120px;
+ margin-left: 200px;
+  
 }
 
 .filters {
@@ -102,8 +145,8 @@ export default {
     margin-top: 25px;
     margin-bottom: 9px;
     justify-content: space-between;
-    padding-left: 120px;
-    padding-right: 120px;
+   margin-left: 200px;
+   margin-right: 200px;
 }
 
 .search-input {
@@ -134,8 +177,8 @@ export default {
 }
 
 .service-list {
-  padding-left: 120px;
-  padding-right: 120px;
+  margin-left: 200px;
+  margin-right: 200px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, auto);
